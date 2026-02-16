@@ -1,0 +1,56 @@
+name: "@kalo-build/plugin-morphe-morphemap"
+displayName: "Morphe MorpheMap Scaffolder"
+description: "Scaffolds MorpheMap (.map) files from Morphe type definitions. Given source and target types, generates skeleton mapping files with aliases and all fields pre-populated for manual refinement."
+version: "1.0.0"
+
+inputs:
+  registry:
+    format: "KA:MO1:YAML1"
+    description: "Local Morphe YAML schema files"
+    suggestedStore:
+      name: "KA_MO_YAML"
+      type: "localFileSystem"
+      path: "./morphe/registry"
+  external:
+    format: "KA:MO1:YAML1"
+    description: "External Morphe YAML schema files (third-party API types)"
+    suggestedStore:
+      name: "KA_MO_EXT"
+      type: "localFileSystem"
+      path: "./morphe/external"
+
+output:
+  format: "KA:MM1:YAML1"
+  description: "MorpheMap YAML transformation files"
+  suggestedStore:
+    name: "KA_MM_YAML"
+    type: "localFileSystem"
+    path: "./morphe/maps"
+
+configSchema:
+  mappings:
+    type: array
+    description: "List of source→target type pairs to scaffold maps for"
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: "Name for the generated map"
+          required: true
+        sourceAlias:
+          type: string
+          description: "Alias name for the source type (e.g., 'IS24')"
+          required: true
+        sourcePath:
+          type: string
+          description: "Morphe type path for the source (e.g., 'immoscout24/RealEstateHouseBuy')"
+          required: true
+        targetAlias:
+          type: string
+          description: "Alias name for the target type (e.g., 'Local')"
+          required: true
+        targetPath:
+          type: string
+          description: "Morphe type path for the target (e.g., 'RealEstateListing')"
+          required: true

@@ -1,0 +1,10 @@
+name: OrgToProject
+aliases:
+  Org: Organization
+  Proj: Project
+fields:
+  Proj.Name: Org.Name
+  Proj.Code: Org.Code
+  Proj.Description:
+    from: Org.Name
+    cast: string
