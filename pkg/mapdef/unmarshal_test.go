@@ -117,25 +117,13 @@ Tgt.Status:
 	suite.Equal("string", statusVal.Object.Cast)
 }
 
-func (suite *UnmarshalTestSuite) TestUnmarshalFieldMappings_Auto() {
+func (suite *UnmarshalTestSuite) TestUnmarshalFieldMappings_ScalarRejected() {
 	input := `auto`
 
 	var fm mapdef.FieldMappings
 	unmarshalErr := yaml.Unmarshal([]byte(input), &fm)
 
-	suite.NoError(unmarshalErr)
-	suite.NotNil(fm)
-	suite.Len(fm, 0)
-}
-
-func (suite *UnmarshalTestSuite) TestUnmarshalFieldMappings_InvalidScalar() {
-	input := `not_auto`
-
-	var fm mapdef.FieldMappings
-	unmarshalErr := yaml.Unmarshal([]byte(input), &fm)
-
 	suite.Error(unmarshalErr)
-	suite.Contains(unmarshalErr.Error(), "only 'auto' is valid")
 }
 
 func (suite *UnmarshalTestSuite) TestMarshalFieldMappingValue_Scalar() {
