@@ -13,5 +13,5 @@ require (
 require (
 	github.com/kalo-build/clone v0.0.0-20250329082958-41db0353412f // indirect
 	github.com/kalo-build/go-util v0.0.0-20250329083327-00e97aeff9b7 // indirect
-	github.com/kalo-build/morphe-go v0.0.0-20250329083854-5ef43064c884
+	github.com/kalo-build/morphe-go v0.0.0-20260312144523-0841ef1ee9f8
 )
